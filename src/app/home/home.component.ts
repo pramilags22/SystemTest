@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       console.log( this.profileList);
   }
   goToProfileDetails(item: any): void {
-    localStorage.setItem('navState', 'profile-details')
+    localStorage.setItem('navState', 'profile-details')   
     this.router.navigate(['/profile-details'], {state: {data: item}});
   }
 
