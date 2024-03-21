@@ -24,6 +24,7 @@ export class GestureComponent implements OnInit {
   }
 
   getCardTransform(index: number): string {
+    // alert()
     return `translateY(${index * 20}px)`;
   }
 

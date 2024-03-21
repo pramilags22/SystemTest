@@ -1,7 +1,7 @@
 .card-stack {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 500px;
+  height: 600px;
 }
 
 .card {
@@ -18,17 +18,15 @@
   transition: transform 0.3s ease;
   border: none !important;
 }
-
 .card-rounded {
   border-radius: 20px;
   overflow: hidden;
   // border: 3px solid lightgray !important;
 }
-
 .custum_imgS {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
+ height: 400px !important;
+ object-fit: cover;
 }
 
 .btn-custum {
@@ -42,7 +40,6 @@
   width: 40px;
 
 }
-
 .btn-custum2 {
   background: white;
   border-radius: 50px;
@@ -53,4 +50,8 @@
   justify-content: center;
   height: 40px;
   width: 40px;
+}
+
+p {
+  color: rebeccapurple;
 }

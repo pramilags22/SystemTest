@@ -1,24 +1,18 @@
 <a [href]="'/' + navState" mat-icon-button color="warn">
-    <button mat-icon-button >
+    <button mat-icon-button>
         <mat-icon>arrow_back</mat-icon>
-      </button>
+    </button>
 </a>
 <div class="container-fluid">
     <div style="display: flex; justify-content: center;">
         <div class="card-stack">
-            <div class="" *ngFor="let data of profileList; let i = index" [style.transform]="getCardTransform(i)">
-                <!-- {{ data.name }} -->
-                <div class="p-2 ">
-                    <div class="card card-rounded " *ngIf="profileList.length > 0">
-                        <img [src]="data?.img" class="img-fluid custum_imgS" alt="image">
-                        <div class="card-body">
-                            <!-- <div> <label>
-                <mat-icon>done</mat-icon>
-               Verified</label>
-               <span style="float: right;"> <mat-icon >diamond</mat-icon>
-               Premium NRI</span>
-            </div> -->
-                            <strong>{{data?.name}}</strong>
+            <div class="card" *ngFor="let data of profileList; let i = index" [style.transform]="getCardTransform(i)">
+
+                <div class="card" >
+                    <img [src]="data?.img" class="img-fluid custum_imgS" alt="image">
+                    <div class="card-body">
+                        <div>
+                            <p class="fw-bold">{{data?.name}}</p>
                             <p>{{data?.description}}</p>
                             <hr>
                             <div class="d-flex align-items-center justify-content-between">
@@ -43,7 +37,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="card" *ngIf="profileList.length == 0">
                 No data found!

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'src/services/profile.service';
 
 @Component({
@@ -11,30 +11,27 @@ export class ProfileDetailsComponent implements OnInit {
 
   profileList: any
   navState: any
-  constructor(private service: ProfileService, private router: Router, private cdr: ChangeDetectorRef) { }
+  constructor(private service: ProfileService, private router: Router, private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.navState = localStorage.getItem('navState');
     this.getProfile();
   }
 
-  getProfile(){
-      this.profileList = this.service.getProfiles()
-      let profileId = history.state.data ? history.state.data.id : localStorage.getItem("profileId")
-      console.log(profileId);
-      if(profileId){
-        localStorage.setItem("profileId", profileId)
-      if(this.profileList.find((x: any) => x.id == profileId)){
-        let currentIndex = this.profileList.findIndex((x: any) => x.id === profileId);
-        const elementToMove = this.profileList[currentIndex];
-        this.profileList.splice(currentIndex, 1); 
-        this.profileList.splice(0, 0, elementToMove);
+  getProfile() {
+    this.profileList = this.service.getProfiles()
+    let profileId = this.route.snapshot.paramMap.get('id')
+    if (profileId) {
+      let currentIndex = this.profileList.findIndex((x: any) => x.id == profileId);
+      if (currentIndex !== -1) {
+        const selectedProfile = this.profileList[currentIndex];
+        this.profileList.splice(currentIndex, 1);
+        this.profileList.unshift(selectedProfile);
       }
     }
     this.cdr.detectChanges()
   }
-  ngOnDestroy() {
-    localStorage.removeItem("profileId")
-  }
+  
 
 }
