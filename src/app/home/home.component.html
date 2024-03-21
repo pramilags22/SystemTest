@@ -1,0 +1,49 @@
+<div class="container-fluid vh-100">
+    <div class="d-flex justify-content-end">
+        <button mat-icon-button (click)="goToGestureScreen()" >
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </div>
+
+        <!-- <ngb-carousel [showNavigationIndicators]="true" >
+            <ng-template ngbSlide *ngFor="let data of profileList">
+                <div class="p-2" >
+                    <div class="card" (click)='cardAnimation("swipeleft")'>
+                        <img [src]="data?.img" class="img-fluid custum_imgS" alt="image"
+                            (click)="goToProfileDetails(data)">
+                        <div class="card-body">
+                            <strong>{{data?.name}}</strong>
+                            <p (click)="goToProfileDetails(data)">{{data?.description}}</p>
+                            <div>
+                                <button class="btn btn-custum me-2" (click)="removeProfile(data)">Yes</button>
+                                <button class="btn btn-custum2" (click)="removeProfile(data)">No</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </ng-template>
+        </ngb-carousel> -->
+
+        <swiper [slidesPerView]="2" [centeredSlides]="true" [pagination]="{ clickable: true }"
+        class="mySwiper">
+        <ng-template swiperSlide class="swiper-Container" *ngFor="let data of profileList">
+            <div>
+                <div class="card">
+                    <img [src]="data?.img" class="img-fluid custum_imgS" alt="image" (click)="goToProfileDetails(data)">
+                    <div class="card-body">
+                        <strong>{{data?.name}}</strong>
+                        <p (click)="goToProfileDetails(data)">{{data?.description}}</p>
+                        <div>
+                            <button class="btn btn-custum me-md-2" (click)="removeProfile(data)">Yes</button>
+                            <button class="btn btn-custum2" (click)="removeProfile(data)">No</button>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </ng-template>
+        </swiper>
+    
+</div>

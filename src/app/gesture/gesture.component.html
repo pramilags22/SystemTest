@@ -1,0 +1,55 @@
+<a [href]="'/' + navState" mat-icon-button color="warn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+    </svg>
+</a>
+<div class="container-fluid">
+    <div style="display: flex; justify-content: center;">
+        <div class="card-stack">
+            <div class="" *ngFor="let data of profileList; let i = index" [style.transform]="getCardTransform(i)">
+                <!-- {{ data.name }} -->
+                <div class="p-2 ">
+                    <div class="card card-rounded " *ngIf="profileList.length > 0">
+                        <img [src]="data?.img" class="img-fluid custum_imgS" alt="image">
+                        <div class="card-body">
+                            <!-- <div> <label>
+                <mat-icon>done</mat-icon>
+               Verified</label>
+               <span style="float: right;"> <mat-icon >diamond</mat-icon>
+               Premium NRI</span>
+            </div> -->
+                            <strong>{{data?.name}}</strong>
+                            <p>{{data?.description}}</p>
+                            <hr>
+                            <div class="d-flex align-items-center justify-content-between">
+
+                                <div class="d-flex align-items-end">
+                                    <mat-icon>star_border</mat-icon> <span class="mt-10">Shortlist</span>
+                                </div>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="me-2">
+                                        <strong>Like her? </strong>
+                                    </div>
+                                    <div class="d-flex">
+                                        <button class="btn btn-custum2 me-2"
+                                            (click)="removeProfile(data)"><mat-icon>close</mat-icon> </button>
+                                        <button class="btn btn-custum "
+                                            (click)="removeProfile(data)"><mat-icon>check</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card" *ngIf="profileList.length == 0">
+                No data found!
+            </div>
+        </div>
+    </div>
+</div>
